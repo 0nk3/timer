@@ -1,7 +1,13 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Timer</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <circle-progress
+    [percent]="85"
+    [radius]="100"
+    [outerStrokeWidth]="16"
+    [innerStrokeWidth]="8"
+    [outerStrokeColor]="'#0ee30e'"
+    [innerStrokeColor]="'#ffffff'"
+    [animation]="true"
+    [animationDuration]="300"
+  >
+  </circle-progress>
 </ion-content>
