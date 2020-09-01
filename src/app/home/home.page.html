@@ -1,13 +1,20 @@
 <ion-content [fullscreen]="true">
+  <ion-item color="dark">
+    <ion-label> Period </ion-label>
+    <ion-datetime display-format="mm:ss" placeholder="Tap Here" [(ngModel)]="fullTime"></ion-datetime>
+  </ion-item>
   <circle-progress
-    [percent]="85"
-    [radius]="100"
+    (click)="startTimer()"
+    [percent]="percent"
+    [maxPercent]="100"
+    [radius]="radius"
     [outerStrokeWidth]="16"
     [innerStrokeWidth]="8"
     [outerStrokeColor]="'#0ee30e'"
     [innerStrokeColor]="'#ffffff'"
     [animation]="true"
     [animationDuration]="300"
+    [outerStrokeGradientStopColor]="'#FF00CB'"
   >
   </circle-progress>
 </ion-content>
