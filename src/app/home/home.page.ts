@@ -17,6 +17,9 @@ export class HomePage {
   seconds: any = 1;
 
   startTimer() {
+    if(this.timer){
+      clearInterval(this.timer);
+    }
     this.timer = false; // everytime the selctor is clicked, we restart
     this.percent = 0;
     this.progress = 0;
@@ -32,7 +35,11 @@ export class HomePage {
     // tslint:disable-next-line:radix
     const totalSeconds: number = Math.floor(this.minutes * 60) + parseInt(this.seconds);
     this.timer = setInterval(() => {
+      if (this.percent === this.radius) {
+        clearInterval(this.timer);
+      }
       this.percent = Math.floor((this.progress / totalSeconds) * 100);
-    });
+      this.progress++;
+    }, 1000);
   }
 }
