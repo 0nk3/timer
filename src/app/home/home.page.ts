@@ -9,7 +9,7 @@ export class HomePage {
   constructor() {}
   percent = 0; // its dynamic
   radius = 100;
-  fullTime = "00:05:00";
+  fullTime = "00:00:30"; // default rest period is 30 seconds
   timer: any = false;
   progress = 0;
 
@@ -17,10 +17,10 @@ export class HomePage {
   seconds: any = 1;
 
   startTimer() {
-    if(this.timer){
+    if (this.timer) {
       clearInterval(this.timer);
     }
-    this.timer = false; // everytime the selctor is clicked, we restart
+    this.timer = false; // everytime the selctor is clicked, we restart the timer
     this.percent = 0;
     this.progress = 0;
 
@@ -31,7 +31,7 @@ export class HomePage {
     // tslint:disable-next-line:radix
     this.seconds = parseInt(timeElapsed[2]);
 
-    // let get total seconds
+    // let's get total seconds
     // tslint:disable-next-line:radix
     const totalSeconds: number = Math.floor(this.minutes * 60) + parseInt(this.seconds);
     this.timer = setInterval(() => {
