@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: "app-home",
@@ -7,7 +8,7 @@ import { Insomnia } from '@ionic-native/insomnia/ngx';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  constructor(private insomnia: Insomnia) {}
+  constructor(private insomnia: Insomnia, private splash: SplashScreen) {}
 
   percent = 0; // its dynamic
   radius = 100;
@@ -17,7 +18,6 @@ export class HomePage {
   // complete: string;
   minutes = 1;
   seconds: any = 1;
-
   startTimer() {
     if (this.timer) {
       clearInterval(this.timer);
