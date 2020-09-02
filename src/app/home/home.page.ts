@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 @Component({
   selector: "app-home",
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  constructor() {}
+  constructor(private insomnia: Insomnia) {}
+
   percent = 0; // its dynamic
   radius = 100;
   fullTime = "00:00:10"; // default rest period is 10 seconds
@@ -20,6 +22,8 @@ export class HomePage {
     if (this.timer) {
       clearInterval(this.timer);
     }
+    // keep it awake while its counting
+    this.insomnia.keepAwake();
     this.timer = false; // everytime the selctor is clicked, we restart the timer
     this.percent = 0;
     this.progress = 0;
@@ -48,5 +52,8 @@ export class HomePage {
     this.timer = false;
     this.percent = 0;
     this.progress = 0;
+
+    // controll sleeping: when users stops it, allow it to sleep
+    this.insomnia.allowSleepAgain();
   }
 }
