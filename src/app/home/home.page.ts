@@ -9,10 +9,10 @@ export class HomePage {
   constructor() {}
   percent = 0; // its dynamic
   radius = 100;
-  fullTime = "00:00:30"; // default rest period is 30 seconds
+  fullTime = "00:00:10"; // default rest period is 10 seconds
   timer: any = false;
   progress = 0;
-
+  // complete: string;
   minutes = 1;
   seconds: any = 1;
 
@@ -41,5 +41,12 @@ export class HomePage {
       this.percent = Math.floor((this.progress / totalSeconds) * 100);
       this.progress++;
     }, 1000);
+  }
+  // todo when the stop button is clicked
+  stopTimer() {
+    clearInterval(this.timer);
+    this.timer = false;
+    this.percent = 0;
+    this.progress = 0;
   }
 }

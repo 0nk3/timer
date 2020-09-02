@@ -15,6 +15,20 @@
     [animation]="false"
     [animationDuration]="300"
     [outerStrokeGradientStopColor]="'#000000'"
+    [clockwise]="false"
+    [responsive]="true"
   >
   </circle-progress>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ng-container *ngIf="timer === false; else running">
+      <ion-fab-button (click)="startTimer()" color="dark">
+        <ion-icon name="play-sharp"></ion-icon>
+      </ion-fab-button>
+    </ng-container>
+    <ng-template #running>
+      <ion-fab-button (click)="stopTimer()" color="dark">
+        <ion-icon name="stop-sharp"></ion-icon>
+      </ion-fab-button>
+    </ng-template>
+  </ion-fab>
 </ion-content>
