@@ -15,14 +15,15 @@ export class HomePage {
   timer: any = false;
   progress = 0;
   formatSubtitle: string;
-  // complete: string;
-  minutes = 1;
-  seconds: any = 1;
+  titleColor: string;
+  subTitleColor: string;
+  minutes = 0;
+  seconds: any = 0;
   startTimer() {
     if (this.timer) {
       clearInterval(this.timer);
     }
-    // keep it awake while its counting
+    // keep phone awake while its timer is running
     this.insomnia.keepAwake();
     this.timer = false; // everytime the selctor is clicked, we restart the timer
     this.percent = 0;
@@ -46,13 +47,18 @@ export class HomePage {
       this.progress++;
       // text displayed while timer is running and when its done
       if (this.progress < totalSeconds) {
-        this.formatSubtitle = "Progress . . .";
+        this.titleColor = "#0ee30e";
+        this.subTitleColor = "#0ee30e";
+
+        this.formatSubtitle = "progress...";
       }
       if (this.progress === totalSeconds) {
         // I need to delay the display by 2 seconds for accuracy reasons
         (async () => {
           await this.delay(2000);
-          this.formatSubtitle = "Complete!";
+          this.titleColor = "#ea0c0c";
+          this.subTitleColor = "#ea0c0c";
+          this.formatSubtitle = "time up!";
         })();
       }
     }, 1000);

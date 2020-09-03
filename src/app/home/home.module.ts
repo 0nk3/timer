@@ -21,7 +21,7 @@ import { HomePage } from './home.page';
       innerStrokeWidth: 10,
       titleColor: "#ffffff",
       subtitleColor: "#ffffff",
-      space: 1,
+      space: 2,
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
       outerStrokeLinecap: "round",
