@@ -16,7 +16,7 @@ import { HomePage } from './home.page';
     // Specify ng-circle-progress as an import
     NgCircleProgressModule.forRoot({
       // set defaults here
-      radius: 100,
+      radius: 60,
       outerStrokeWidth: 20,
       innerStrokeWidth: 10,
       titleColor: "#ffffff",
@@ -24,7 +24,7 @@ import { HomePage } from './home.page';
       space: 1,
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
-      outerStrokeLinecap: "square",
+      outerStrokeLinecap: "round",
       animationDuration: 300,
       animation: false,
       responsive: true,

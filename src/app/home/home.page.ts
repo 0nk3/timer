@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: "app-home",
@@ -8,13 +7,14 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  constructor(private insomnia: Insomnia, private splash: SplashScreen) {}
+  constructor(private insomnia: Insomnia) {}
 
   percent = 0; // its dynamic
   radius = 100;
-  fullTime = "00:00:10"; // default rest period is 10 seconds
+  fullTime = "00:00:08"; // default rest period is 08 seconds
   timer: any = false;
   progress = 0;
+  formatSubtitle: string;
   // complete: string;
   minutes = 1;
   seconds: any = 1;
@@ -44,6 +44,17 @@ export class HomePage {
       }
       this.percent = Math.floor((this.progress / totalSeconds) * 100);
       this.progress++;
+      // text displayed while timer is running and when its done
+      if (this.progress < totalSeconds) {
+        this.formatSubtitle = "Progress . . .";
+      }
+      if (this.progress === totalSeconds) {
+        // I need to delay the display by 2 seconds for accuracy reasons
+        (async () => {
+          await this.delay(2000);
+          this.formatSubtitle = "Complete!";
+        })();
+      }
     }, 1000);
   }
   // todo when the stop button is clicked
@@ -55,5 +66,8 @@ export class HomePage {
 
     // controll sleeping: when users stops it, allow it to sleep
     this.insomnia.allowSleepAgain();
+  }
+  delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
